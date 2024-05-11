@@ -27,10 +27,16 @@ const stock = {
 };
 
 
-// const promptText = document.getElementById('prompt-text');
-// const mooreBtn = document.getElementById('moore-btn');
+const promptText = document.getElementById('prompt-text');
+const mooreBtn = document.getElementById('moore-btn');
+let numInput = '<input id="number" type="number" placeholder=" # of items" autocomplete="off">';
 
-
+mooreBtn.addEventListener('click', () => {
+    promptText.textContent = `Enter number of ...`;
+    promptText.insertAdjacentHTML('afterend', numInput);
+    mooreBtn.textContent = 'Enter';
+    mooreBtn.id = 'btn';
+});
 
 function createOrder(facility, orderType) {
     const idealStock = JSON.parse(JSON.stringify(stock[facility][orderType])); // 1. Deep Copy the Relevant Stock Data

@@ -116,6 +116,14 @@ main {
     padding: 10px 0;
 }
 
+#number {
+    border-radius: 5px;
+    border: none;
+    height: 20px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
 .facility-btn {
     display: block;
     margin: auto;
