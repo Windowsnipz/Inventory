@@ -27,8 +27,8 @@ const stock = {
 };
 
 
-const promptText = document.getElementById('prompt-text');
-const mooreBtn = document.getElementById('moore-btn');
+// const promptText = document.getElementById('prompt-text');
+// const mooreBtn = document.getElementById('moore-btn');
 
 
 
@@ -45,6 +45,12 @@ function createOrder(facility, orderType) {
     return orderQuantities;
   }
 
-function fetch_current_inventory(inventory) {
 
+
+
+function fetchCurrentInventory(inventory) {
+    for (const key in inventory) {
+       
+      }
+      return inventory;
   }
