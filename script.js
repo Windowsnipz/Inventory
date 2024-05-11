@@ -1,4 +1,3 @@
-// Model A
 const stock = {
     "moore": {
         "scott pharma": {
@@ -26,6 +25,11 @@ const stock = {
         }
     },
 };
+
+
+const promptText = document.getElementById('prompt-text');
+const mooreBtn = document.getElementById('moore-btn');
+
 
 
 function createOrder(facility, orderType) {
