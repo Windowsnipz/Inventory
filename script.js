@@ -36,3 +36,6 @@ mooreBtn.addEventListener('click', () => {
 });
 
 
+function getOrder() {
+    const orderType = 
+}
