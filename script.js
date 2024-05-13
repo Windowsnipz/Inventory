@@ -61,9 +61,12 @@ function getOrderType(facility) {
         orderTypeBtn.id = `${orderType.toLowerCase().replace(/ /g, '-')}-btn`;
         orderTypeBtn.value = orderType.toLowerCase();
         orderTypeBtn.textContent = orderType;
+
+        orderTypeBtn.addEventListener('click', () => getOrderItems(orderType));
         
         inputDiv.appendChild(orderTypeBtn);
-        let facilityButtons = document.querySelectorAll('.facility-btn');
-        facilityButtons.forEach((btn) => btn.remove());
     }
+
+    let facilityButtons = document.querySelectorAll('.facility-btn'); // removes facility buttons
+    facilityButtons.forEach((btn) => btn.remove());
 }
