@@ -70,3 +70,8 @@ function getOrderType(facility) {
     let facilityButtons = document.querySelectorAll('.facility-btn'); // removes facility buttons
     facilityButtons.forEach((btn) => btn.remove());
 }
+
+
+function getOrderItems(orderType) {
+    
+}
