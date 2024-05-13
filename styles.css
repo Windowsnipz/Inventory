@@ -124,7 +124,7 @@ main {
     margin: 5px 0;
 }
 
-.facility-btn {
+.btn {
     display: inline-block;
     margin: 10px 5px;
     padding: 8px;
@@ -138,14 +138,14 @@ main {
     transition: color 0.2s, background-color 0.2s;
 }
 
-.facility-btn:hover {
+.btn:hover {
     cursor: pointer;
     color: var(--gray1);
     background-color: var(--blue1);
     transition: color 0.2s, background-color 0.2s;
 }
 
-.facility-btn:active {
+.btn:active {
     color: var(--orange1);
     background-color: var(--orange1);
 }

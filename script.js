@@ -35,7 +35,7 @@ let numInput = '<input id="number" type="number" placeholder=" # of items" autoc
 
 for (let facility in stock) { // List facility buttons
     let facilityBtn = document.createElement('button');
-    facilityBtn.className = 'facility-btn';
+    facilityBtn.className = 'btn';
     facilityBtn.id = `${facility.toLowerCase()}-btn`;
     facilityBtn.value = facility.toLowerCase;
     facilityBtn.textContent = facility;
@@ -48,4 +48,15 @@ for (let facility in stock) { // List facility buttons
 
 function getOrderType(facility) {
     alert(`Getting order type for ${facility}`);
+    let orderTypes = stock[facility];
+
+    for (let orderType in orderTypes) {
+        let orderTypeBtn = document.createElement('button');
+        orderTypeBtn.className = 'btn';
+        orderTypeBtn.id = `${orderType.toLowerCase().replace(/ /g, '-')}-btn`;
+        orderTypeBtn.value = orderType.toLowerCase();
+        orderTypeBtn.textContent = orderType;
+        
+        inputDiv.appendChild(orderTypeBtn);
+    }
 }
