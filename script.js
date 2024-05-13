@@ -25,7 +25,13 @@ const stock = {
         }
     },
     "Vail": {
-
+        "oogitee boogitee": {
+            "mouse huts": 5
+        },
+        "Snacks": {
+            "lil debbie": 5,
+            "coffee": 10
+        }
     }
 };
 
@@ -35,7 +41,7 @@ let numInput = '<input id="number" type="number" placeholder=" # of items" autoc
 
 for (let facility in stock) { // List facility buttons
     let facilityBtn = document.createElement('button');
-    facilityBtn.className = 'btn';
+    facilityBtn.className = 'btn facility-btn';
     facilityBtn.id = `${facility.toLowerCase()}-btn`;
     facilityBtn.value = facility.toLowerCase;
     facilityBtn.textContent = facility;
@@ -47,7 +53,6 @@ for (let facility in stock) { // List facility buttons
 
 
 function getOrderType(facility) {
-    alert(`Getting order type for ${facility}`);
     let orderTypes = stock[facility];
 
     for (let orderType in orderTypes) {
@@ -58,5 +63,7 @@ function getOrderType(facility) {
         orderTypeBtn.textContent = orderType;
         
         inputDiv.appendChild(orderTypeBtn);
+        let facilityButtons = document.querySelectorAll('.facility-btn');
+        facilityButtons.forEach((btn) => btn.remove());
     }
 }
