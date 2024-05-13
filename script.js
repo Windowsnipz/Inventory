@@ -1,6 +1,6 @@
 const stock = {
     "Moore": {
-        "scott pharma": {
+        "Scott Pharma": {
             "regular chow": 5,
             "breeder chow": 5,
             "rat chow": 25,
@@ -10,7 +10,7 @@ const stock = {
             "corn cob bedding": 2
         },
 
-        "ppe" : {
+        "PPE" : {
             "yellow gowns": 2,
             "masks": 2,
             "cloth booties": 5,
@@ -25,12 +25,12 @@ const stock = {
         }
     },
     "Vail": {
-        "oogitee boogitee": {
-            "mouse huts": 5
+        "Oogitee Boogitee": {
+            "Mouse huts": 5
         },
         "Snacks": {
-            "lil debbie": 5,
-            "coffee": 10
+            "Lil' debbies": 5,
+            "Coffee": 10
         }
     }
 };
