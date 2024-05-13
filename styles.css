@@ -125,9 +125,8 @@ main {
 }
 
 .facility-btn {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
+    display: inline-block;
+    margin: 10px 5px;
     padding: 8px;
     font-family: Helvetica, sans-serif;
     /*font-weight: 900;*/

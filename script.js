@@ -1,5 +1,5 @@
 const stock = {
-    "moore": {
+    "Moore": {
         "scott pharma": {
             "regular chow": 5,
             "breeder chow": 5,
@@ -24,18 +24,28 @@ const stock = {
             "Garbage bags": 2,
         }
     },
+    "Vail": {
+
+    }
 };
 
-
+const inputDiv = document.getElementById('input-wrapper');
 const promptText = document.getElementById('prompt-text');
-const mooreBtn = document.getElementById('moore-btn');
 let numInput = '<input id="number" type="number" placeholder=" # of items" autocomplete="off">';
 
-mooreBtn.addEventListener('click', () => {
-    getOrder();
-});
+for (let facility in stock) { // List facility buttons
+    let facilityBtn = document.createElement('button');
+    facilityBtn.className = 'facility-btn';
+    facilityBtn.id = `${facility.toLowerCase()}-btn`;
+    facilityBtn.value = facility.toLowerCase;
+    facilityBtn.textContent = facility;
+
+    inputDiv.appendChild(facilityBtn); // render to page
+
+    facilityBtn.addEventListener('click', () => getOrderType(facility));
+}
 
 
-function getOrder() {
-    const orderType = 
+function getOrderType(facility) {
+    alert(`Getting order type for ${facility}`);
 }
