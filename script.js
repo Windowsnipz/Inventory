@@ -146,6 +146,10 @@ function calculateOrder(currentInv, facility, orderType) { // subract from stock
 function finalizeOrder(amountToOrder) { // send email
     // Order confirmation
     promptText.textContent = 'Here is the order to be placed. Confirm order?';
+    let listOfItems = document.createElement('p');
+    for (let item in amountToOrder) {
+        
+    }
 
 
     // Sends the email
