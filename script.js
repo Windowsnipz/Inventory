@@ -57,12 +57,17 @@ function getOrderType(facility) {
 
     for (let orderType in orderTypes) {
         let orderTypeBtn = document.createElement('button');
-        orderTypeBtn.className = 'btn';
+        orderTypeBtn.className = 'btn order-type-btn';
         orderTypeBtn.id = `${orderType.toLowerCase().replace(/ /g, '-')}-btn`;
         orderTypeBtn.value = orderType.toLowerCase();
         orderTypeBtn.textContent = orderType;
 
-        orderTypeBtn.addEventListener('click', () => getOrderItems(orderType));
+        orderTypeBtn.addEventListener('click', () => {
+            let currentInv = JSON.parse(JSON.stringify(orderTypes[orderType]));
+            getOrderItems(currentInv, orderType);
+            currentInv = {}; // Reset currentInv after an order is placed
+        });
+        
         
         inputDiv.appendChild(orderTypeBtn);
     }
@@ -72,6 +77,8 @@ function getOrderType(facility) {
 }
 
 
-function getOrderItems(orderType) {
-    
+function getOrderItems(currentInv, orderType) {
+    promptText.textContent = `You chose ${orderType}!`;
+    console.log(`Order type: ${orderType}`);
+    console.log(currentInv);
 }
