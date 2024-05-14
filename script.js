@@ -88,15 +88,34 @@ function getOrderItems(currentInv, orderType) {
     promptText.textContent = `You chose ${orderType}!`;
     console.log(currentInv);
 
-    // later TODO: styling for input elements. Refer to other projects with this template and consider labels.
-    // Loop through items in currentInv, making an input for each
-    for (let item in currentInv) {
-        let itemInput = document.createElement('input');
-        itemInput.id = `${item.toLowerCase().replace(/ /g, '-')}`;
-        itemInput.placeholder = `No. of ${item}`;
-        itemInput.type = 'number'; // later TODO: add regex to check
-        itemInput.autocomplete = 'off';
+    let items = Object.keys(currentInv);
+    let index = 0;
 
-        inputDiv.appendChild(itemInput);
+    function promptForItem(items, index) {
+        if (index < items.length) {
+            let item = items[index];
+            let itemInput = document.createElement('input');
+            itemInput.id = `${item.toLowerCase().replace(/ /g, '-')}`;
+            itemInput.placeholder = `No. of ${item}`;
+            itemInput.type = 'number' // later TODO: add regex to check
+            itemInput.autocomplete = 'off';
+
+            let enterButton = document.createElement('button');
+            enterButton.textContent = 'Enter';
+            enterButton.addEventListener('click', () => {
+                currentInv[item] = parseInt(itemInput.value);
+                console.log(currentInv);
+                itemInput.remove();
+                enterButton.remove();
+                promptForItem(items, index + 1);
+            });
+
+            inputDiv.appendChild(itemInput);
+            inputDiv.appendChild(enterButton);
+        } else {
+            // All items were processed, continue with rest of code
+        }
     }
+
+    promptForItem(items, index);
 }
