@@ -64,6 +64,9 @@ function getOrderType(facility) {
 
         orderTypeBtn.addEventListener('click', () => {
             let currentInv = JSON.parse(JSON.stringify(orderTypes[orderType]));
+            for (let item in currentInv) { // Set the items in the copy to 0.
+                currentInv[item] = 0;
+            }
             getOrderItems(currentInv, orderType);
             currentInv = {}; // Reset currentInv after an order is placed
         });
@@ -78,7 +81,20 @@ function getOrderType(facility) {
 
 
 function getOrderItems(currentInv, orderType) {
+     let orderTypeButtons = document.querySelectorAll('.order-type-btn'); // removes order type buttons
+     orderTypeButtons.forEach((btn) => btn.remove());
+
     promptText.textContent = `You chose ${orderType}!`;
-    console.log(`Order type: ${orderType}`);
     console.log(currentInv);
+
+    // Loop through items in currentInv, making an input for each
+    for (let item in currentInv) {
+        let itemInput = document.createElement('input');
+        itemInput.id = `${item.toLowerCase().replace(/ /g, '-')}`;
+        itemInput.placeholder = `No. of ${item}`;
+        itemInput.type = 'number'; // later TODO: add regex to check
+        itemInput.autocomplete = 'off';
+
+        inputDiv.appendChild(itemInput);
+    }
 }
