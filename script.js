@@ -54,6 +54,7 @@ for (let facility in stock) { // List facility buttons
 
 function getOrderType(facility) {
     let orderTypes = stock[facility];
+    promptText.textContent = 'Please choose order type:';
 
     for (let orderType in orderTypes) {
         let orderTypeBtn = document.createElement('button');
