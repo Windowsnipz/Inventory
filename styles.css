@@ -150,6 +150,13 @@ main {
     background-color: var(--orange1);
 }
 
+input {
+    display: block;
+    margin: 10px auto;
+    height: 20px;
+}
+
+
 /* Footer */
 footer {
 

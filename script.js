@@ -96,12 +96,14 @@ function getOrderItems(currentInv, orderType, facility) {
             let item = items[index];
             let itemInput = document.createElement('input');
             itemInput.id = `${item.toLowerCase().replace(/ /g, '-')}`;
-            itemInput.placeholder = `No. of ${item}`;
+            itemInput.placeholder = ` No. of ${item}`;
             itemInput.type = 'number' // later TODO: add regex to check
             itemInput.autocomplete = 'off';
+            promptText.textContent = `Boxes/bags of ${item} in inventory:`;
 
             let enterButton = document.createElement('button');
             enterButton.textContent = 'Enter';
+            enterButton.className = 'btn';
             enterButton.addEventListener('click', () => {
                 currentInv[item] = parseInt(itemInput.value);
                 itemInput.remove();
@@ -142,5 +144,10 @@ function calculateOrder(currentInv, facility, orderType) { // subract from stock
 }
 
 function finalizeOrder(amountToOrder) { // send email
+    // Order confirmation
+    promptText.textContent = 'Here is the order to be placed. Confirm order?';
+
+
+    // Sends the email
     console.log('complete!');
 }
