@@ -105,7 +105,7 @@ function getOrderItems(currentInv, orderType, facility) {
             enterButton.textContent = 'Enter';
             enterButton.className = 'btn';
             enterButton.addEventListener('click', () => {
-                currentInv[item] = parseInt(itemInput.value);
+                currentInv[item] = parseInt(itemInput.value); // later TODO: validate user input (decimals, negatives, letter inputs, ...ugh)
                 itemInput.remove();
                 enterButton.remove();
 
@@ -148,7 +148,7 @@ function finalizeOrder(amountToOrder) { // send email
     promptText.textContent = 'Here is the order to be placed. Confirm order?';
     let listOfItems = document.createElement('p');
     for (let item in amountToOrder) {
-        
+
     }
 
 
