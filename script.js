@@ -87,6 +87,7 @@ function getOrderItems(currentInv, orderType) {
     promptText.textContent = `You chose ${orderType}!`;
     console.log(currentInv);
 
+    // later TODO: styling for input elements. Refer to other projects with this template and consider labels.
     // Loop through items in currentInv, making an input for each
     for (let item in currentInv) {
         let itemInput = document.createElement('input');
