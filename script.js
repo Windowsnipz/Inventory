@@ -104,9 +104,14 @@ function getOrderItems(currentInv, orderType) {
             enterButton.textContent = 'Enter';
             enterButton.addEventListener('click', () => {
                 currentInv[item] = parseInt(itemInput.value);
-                console.log(currentInv);
                 itemInput.remove();
                 enterButton.remove();
+
+                if (index === items.length - 1) {
+                    const amountToOrder = calculateOrder(currentInv);
+                    finalizeOrder(amountToOrder);
+                }
+
                 promptForItem(items, index + 1);
             });
 
@@ -118,4 +123,15 @@ function getOrderItems(currentInv, orderType) {
     }
 
     promptForItem(items, index);
+}
+
+function calculateOrder(currentInv) { // subract from stock values
+    console.log(currentInv);
+
+
+    return amountToOrder
+}
+
+function finalizeOrder(amountToOrder) { // send email
+    console.log('complete!');
 }
