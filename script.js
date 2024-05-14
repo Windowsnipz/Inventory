@@ -68,7 +68,7 @@ function getOrderType(facility) {
             for (let item in currentInv) { // Set the items in the copy to 0.
                 currentInv[item] = 0;
             }
-            getOrderItems(currentInv, orderType);
+            getOrderItems(currentInv, orderType, facility);
             currentInv = {}; // Reset currentInv after an order is placed
         });
         
@@ -81,7 +81,7 @@ function getOrderType(facility) {
 }
 
 
-function getOrderItems(currentInv, orderType) {
+function getOrderItems(currentInv, orderType, facility) {
      let orderTypeButtons = document.querySelectorAll('.order-type-btn'); // removes order type buttons
      orderTypeButtons.forEach((btn) => btn.remove());
 
@@ -91,7 +91,7 @@ function getOrderItems(currentInv, orderType) {
     let items = Object.keys(currentInv);
     let index = 0;
 
-    function promptForItem(items, index) {
+    function promptForItem(items, index, facility, orderType) {
         if (index < items.length) {
             let item = items[index];
             let itemInput = document.createElement('input');
@@ -108,11 +108,11 @@ function getOrderItems(currentInv, orderType) {
                 enterButton.remove();
 
                 if (index === items.length - 1) {
-                    const amountToOrder = calculateOrder(currentInv);
+                    const amountToOrder = calculateOrder(currentInv, facility, orderType);
                     finalizeOrder(amountToOrder);
                 }
 
-                promptForItem(items, index + 1);
+                promptForItem(items, index + 1, facility, orderType);
             });
 
             inputDiv.appendChild(itemInput);
@@ -122,12 +122,21 @@ function getOrderItems(currentInv, orderType) {
         }
     }
 
-    promptForItem(items, index);
+    promptForItem(items, index, facility, orderType);
 }
 
-function calculateOrder(currentInv) { // subract from stock values
-    console.log(currentInv);
+function calculateOrder(currentInv, facility, orderType) { // subract from stock values
 
+    console.log(currentInv); // log for debugging
+
+    let amountToOrder = {};
+    for (let item in currentInv) {
+        if (stock[facility][orderType].hasOwnProperty(item)) {
+            amountToOrder[item] = stock[facility][orderType][item] - currentInv[item];
+        }
+    }
+
+    console.log(amountToOrder); // log for debugging
 
     return amountToOrder
 }
