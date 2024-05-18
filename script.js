@@ -48,9 +48,8 @@ for (let facility in stock) { // List facility buttons
 
     inputDiv.appendChild(facilityBtn); // render to page
 
-    facilityBtn.addEventListener('click', () => getOrderType(facility));
+    facilityBtn.addEventListener('click', () => getOrderType(facility)); 
 }
-
 
 function getOrderType(facility) {
     let orderTypes = stock[facility];
@@ -64,7 +63,7 @@ function getOrderType(facility) {
         orderTypeBtn.textContent = orderType;
 
         orderTypeBtn.addEventListener('click', () => {
-            let currentInv = JSON.parse(JSON.stringify(orderTypes[orderType]));
+            let currentInv = JSON.parse(JSON.stringify(orderTypes[orderType])); // Make a deep copy of the order
             for (let item in currentInv) { // Set the items in the copy to 0.
                 currentInv[item] = 0;
             }
@@ -105,13 +104,15 @@ function getOrderItems(currentInv, orderType, facility) {
             enterButton.textContent = 'Enter';
             enterButton.className = 'btn';
             enterButton.addEventListener('click', () => {
-                currentInv[item] = parseInt(itemInput.value); // later TODO: validate user input (decimals, negatives, letter inputs, ...ugh)
+                validateInput(itemInput.value); // VALIDATES USER INPUT
+                currentInv[item] = parseInt(itemInput.value);
                 itemInput.remove();
                 enterButton.remove();
 
                 if (index === items.length - 1) {
-                    const amountToOrder = calculateOrder(currentInv, facility, orderType);
-                    finalizeOrder(amountToOrder);
+                    const amountToOrder = calculateOrder(currentInv, facility, orderType); // Calculates amount of items to order
+                    removeNegativeValues(amountToOrder); // Remove negative values from amountToOrder
+                    finalizeOrder(amountToOrder);  // Send the email
                 }
 
                 promptForItem(items, index + 1, facility, orderType);
@@ -127,9 +128,17 @@ function getOrderItems(currentInv, orderType, facility) {
     promptForItem(items, index, facility, orderType);
 }
 
+function validateInput(value) { // input validation from user item inputs
+    let parsedValue = parseInt(value);
+    if (isNaN(parsedValue) || parsedValue < 0 || value.includes('e') || value.includes('E') || parsedValue > 99) {
+        alert('Error: invalid number entered. Order canceled. Please make sure to enter positive, whole numbers and values less than 100');
+        window.location.reload();
+    }
+}
+
 function calculateOrder(currentInv, facility, orderType) { // subract from stock values
 
-    console.log(currentInv); // log for debugging
+    console.log(currentInv); // log for debugging REMOVE LATER
 
     let amountToOrder = {};
     for (let item in currentInv) {
@@ -138,9 +147,15 @@ function calculateOrder(currentInv, facility, orderType) { // subract from stock
         }
     }
 
-    console.log(amountToOrder); // log for debugging
+    console.log(amountToOrder); // log for debugging REMOVE LATER
 
     return amountToOrder
+}
+
+function removeNegativeValues(amountToOrder) { // remove items with negative values
+    for (let item in amountToOrder) {
+
+    }
 }
 
 function finalizeOrder(amountToOrder) { // send email
