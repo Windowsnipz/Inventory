@@ -157,6 +157,10 @@ function removeNegativeValues(amountToOrder) { // remove items with negative val
             delete amountToOrder[item];
         }
     }
+    if (Object.keys(amountToOrder).length === 0) { // reset page if order object empty
+        alert('Facility seems fully stocked form the values entered. Order Canceled.');
+        window.location.reload();
+    }
     console.log(amountToOrder); // log for debugging REMOVE LATER
     return amountToOrder;
 }
