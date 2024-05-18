@@ -7,6 +7,7 @@
     --darkgreen1: #294B29;
     --darkgreen2: #50623A;
     --neongreen: #4FFFB0;
+    --lightgreen: #E0FBE2;
 }
 
 * {
@@ -33,8 +34,8 @@
 #navbar img {
     max-width: 100px;
     max-height: 80%;
-    padding-left: 15px;
-    border-radius: 5px;
+    margin-left: 15px;
+    border-radius: 50%;
 }
 
 
@@ -149,13 +150,13 @@ main {
 .btn:hover {
     cursor: pointer;
     color: var(--gray1);
-    background-color: var(--blue1);
+    background-color: var(--lightgreen);
     transition: color 0.2s, background-color 0.2s;
 }
 
 .btn:active {
-    color: var(--orange1);
-    background-color: var(--orange1);
+    color: var(--neongreen);
+    background-color: var(--neongreen);
 }
 
 input {
