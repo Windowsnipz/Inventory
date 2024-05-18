@@ -4,6 +4,9 @@
     --gray1: #22313f;
     --gray2: #34495e;
     --orange1: #F88F1F;
+    --darkgreen1: #294B29;
+    --darkgreen2: #50623A;
+    --neongreen: #4FFFB0;
 }
 
 * {
@@ -23,7 +26,7 @@
     z-index: 10;
     width: 100%;
     height: 10vh;
-    border-bottom: 2px solid var(--orange1);
+    border-bottom: 2px solid var(--neongreen);
     background: var(--gray1);
 }
 
@@ -107,7 +110,7 @@ main {
 
 /* Input-wrapper */
 #input-wrapper {
-    border: 2px solid var(--orange1);
+    border: 2px solid var(--neongreen);
     border-radius: 30px;
     width: 50%;
     margin: auto;
