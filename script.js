@@ -25,7 +25,7 @@ const stock = {
         }
     },
     "Vail": {
-        "Oogitee Boogitee": {
+        "Accessories": {
             "Mouse huts": 5
         },
         "Snacks": {
