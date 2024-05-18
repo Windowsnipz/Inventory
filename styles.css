@@ -101,6 +101,10 @@ main {
     margin-top: 50px; /* margin below navbar */
 }
 
+.section p {
+    padding: 10px 0;
+}
+
 /* Input-wrapper */
 #input-wrapper {
     border: 2px solid var(--orange1);

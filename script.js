@@ -38,6 +38,8 @@ const stock = {
 const inputDiv = document.getElementById('input-wrapper');
 const promptText = document.getElementById('prompt-text');
 let numInput = '<input id="number" type="number" placeholder=" # of items" autocomplete="off">';
+const outputText = document.getElementById('output-text');
+const outputDiv = document.getElementById('output');
 
 for (let facility in stock) { // List facility buttons
     let facilityBtn = document.createElement('button');
@@ -168,9 +170,11 @@ function removeNegativeValues(amountToOrder) { // remove items with negative val
 function finalizeOrder(amountToOrder) { // send email
     // Order confirmation
     promptText.textContent = 'Here is the order to be placed. Confirm order?';
-    let listOfItems = document.createElement('p');
+    outputDiv.classList.add('section');
     for (let item in amountToOrder) {
-
+        outputText.innerHTML += `
+            <p>${item}: ${amountToOrder[item]} boxes/bags</p>
+        `;
     }
 
 
