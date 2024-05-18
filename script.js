@@ -110,8 +110,8 @@ function getOrderItems(currentInv, orderType, facility) {
                 enterButton.remove();
 
                 if (index === items.length - 1) {
-                    const amountToOrder = calculateOrder(currentInv, facility, orderType); // Calculates amount of items to order
-                    removeNegativeValues(amountToOrder); // Remove negative values from amountToOrder
+                    let amountToOrder = calculateOrder(currentInv, facility, orderType); // Calculates amount of items to order
+                    amountToOrder = removeNegativeValues(amountToOrder); // Remove negative values from amountToOrder
                     finalizeOrder(amountToOrder);  // Send the email
                 }
 
@@ -147,15 +147,18 @@ function calculateOrder(currentInv, facility, orderType) { // subract from stock
         }
     }
 
-    console.log(amountToOrder); // log for debugging REMOVE LATER
 
     return amountToOrder
 }
 
 function removeNegativeValues(amountToOrder) { // remove items with negative values
     for (let item in amountToOrder) {
-
+        if (amountToOrder[item] < 1) {
+            delete amountToOrder[item];
+        }
     }
+    console.log(amountToOrder); // log for debugging REMOVE LATER
+    return amountToOrder;
 }
 
 function finalizeOrder(amountToOrder) { // send email
